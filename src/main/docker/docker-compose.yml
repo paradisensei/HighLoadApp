@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  demo-postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=HighLoadApp
+  high-load:
+    image: high-load-app
+    depends_on:
+      - demo-postgres
+    ports:
+      - 8080:80
